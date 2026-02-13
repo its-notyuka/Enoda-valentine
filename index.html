@@ -58,11 +58,11 @@
 
     const responses = [
         "Pleaseeeeeee 🥺",
-        "En thangoo laaa, forgive me byy 🥹",
+        "Pleaseeeeeeeeee forgive me byy 🥹",
         "Aiyoooo thangameyyyyyy manichiduu enaaa 😭😔",
         "Kenjikekurennnn 🥺🙏",
         "I lost my control bby, but i never meant what i said, i'm possessive over you, forgive me love 😞",
-        "i loveee you soo much madhu, i'm a idiot, choory 😟, i can't live without talking with you normally, I cried while i drive bike, i know you did too🥺🥺🥺🥺"
+        "i loveee you soo much madhu, i'm a idiot, choory 😟"
     ];
 
     const quote = document.getElementById("quote");
@@ -74,21 +74,23 @@
         question.style.display = "none";
     }
 
+    function moveNoButton() {
+        const x = Math.random() * (window.innerWidth - 100);
+        const y = Math.random() * (window.innerHeight - 50);
+        noBtn.style.position = "absolute";
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
+    }
+
+    // YES / POLACHI POO click
     yesBtn.addEventListener("click", function () {
         hideQuestion();
-
-        if (noCount >= 6) {
-            quote.textContent = "Awwweeeeeeeeeee i love you sooo muchhhh asss hellllllll, Thank you loveeee😍😘";
-        } else if (noCount >= 2) {
-            quote.textContent = "Awwwwwwweee 🥺💗 I know you would forgive me 😘";
-        } else {
-            quote.textContent = "I know you would accept me 💞 Love you 😍";
-        }
-
+        quote.textContent = "awwweeeeeeeeeee i love you sooo muchhhh asss hellllllll, Thank youuu darlingggg 😍😘";
         yesBtn.style.display = "none";
         noBtn.style.display = "none";
     });
 
+    // NO click logic
     noBtn.addEventListener("click", function () {
         hideQuestion();
 
@@ -97,8 +99,13 @@
             noCount++;
         }
 
+        // At 6th No — start the game
         if (noCount === 6) {
-            noBtn.style.display = "none";
+            yesBtn.textContent = "polachi poo 💖";
+            quote.textContent = responses[5];
+
+            // make No run away forever
+            noBtn.addEventListener("mouseover", moveNoButton);
         }
     });
 </script>
