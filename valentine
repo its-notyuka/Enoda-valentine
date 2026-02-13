@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Be My Valentine 💖</title>
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: pink;
+        font-family: Arial, Helvetica, sans-serif;
+        color: white;
+        text-align: center;
+    }
+    .container {
+        max-width: 600px;
+    }
+    h1 {
+        font-size: 32px;
+        margin-bottom: 20px;
+    }
+    #quote {
+        font-size: 22px;
+        margin: 20px 0;
+        min-height: 60px;
+    }
+    button {
+        padding: 12px 25px;
+        font-size: 18px;
+        margin: 10px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        background-color: white;
+        color: pink;
+        font-weight: bold;
+        transition: transform 0.2s;
+    }
+    button:hover {
+        transform: scale(1.1);
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1 id="question">Can I be your Valentine? 💘</h1>
+    <div id="quote"></div>
+    <button id="yesBtn">Yes 💖</button>
+    <button id="noBtn">No 🙈</button>
+</div>
+
+<script>
+    let noCount = 0;
+
+    const responses = [
+        "pleaseeeeeee 🥺",
+        "pleaseeeeeeeeee forgive me byy 🥹",
+        "aiyoooo thangameyyyyyy manichiduu enaaa 😭😔",
+        "kenjikekurennnn 🥺🙏",
+        "I lost my control bby, but i never meant what i said, i'm possessive over you, forgive me love 😞",
+        "i loveee you soo much madhu, i'm a idiot, choory 😟, i can't live without talking with you normally, i cried while i drive bike, i know you did too🥺🥺🥺🥺"
+    ];
+
+    const quote = document.getElementById("quote");
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const question = document.getElementById("question");
+
+    function hideQuestion() {
+        question.style.display = "none";
+    }
+
+    yesBtn.addEventListener("click", function () {
+        hideQuestion();
+
+        if (noCount >= 6) {
+            quote.textContent = "awwweeeeeeeeeee i love you sooo muchhhh asss hellllllll 😍😘";
+        } else if (noCount >= 2) {
+            quote.textContent = "Awwwwwwweee 🥺💗 I know you would forgive me 😘";
+        } else {
+            quote.textContent = "I know you would accept me 💞 Love you 😍";
+        }
+
+        yesBtn.style.display = "none";
+        noBtn.style.display = "none";
+    });
+
+    noBtn.addEventListener("click", function () {
+        hideQuestion();
+
+        if (noCount < responses.length) {
+            quote.textContent = responses[noCount];
+            noCount++;
+        }
+
+        if (noCount === 6) {
+            noBtn.style.display = "none";
+        }
+    });
+</script>
+</body>
+</html>
